@@ -11,6 +11,7 @@
 <script>
 import 'tui-image-editor/dist/tui-image-editor.css'
 import 'tui-color-picker/dist/tui-color-picker.css'
+import School from './components/School'
 const ImageEditor = require('tui-image-editor')
 // 中文菜单
 const localeCN = {

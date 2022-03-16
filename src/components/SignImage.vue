@@ -1,13 +1,14 @@
 <template>
+ <el-button class="save" type="success" size="small" @click="save">保存</el-button>
   <div class="drawing-container">
     <div id="tui-image-editor"></div>
-    <el-button class="save" type="primary" size="small" @click="save">保存</el-button>
   </div>
 </template>
 <script>
 import 'tui-image-editor/dist/tui-image-editor.css'
 import 'tui-color-picker/dist/tui-color-picker.css'
 import ImageEditor from 'tui-image-editor'
+import {Button} from 'element-ui'
 const locale_zh = {
   ZoomIn: '放大',
   ZoomOut: '缩小',
@@ -161,6 +162,10 @@ const customTheme = {
   "colorpicker.title.color": "#fff",
 };
 export default {
+  name:'SignImage',
+  components:{
+    "el-button":Button
+  },
   data() {
     return {
       instance: null
@@ -173,10 +178,10 @@ export default {
     init() {
       this.instance = new ImageEditor(document.querySelector('#tui-image-editor'), {
         includeUI: {
-          loadImage: {
-            path: 'https://p1-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/c1d7a1feb60346449c1a64893888989a~tplv-k3u1fbpfcp-watermark.image',
-            name: 'image'
-          },
+          // loadImage: {
+          //   path: 'https://p1-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/c1d7a1feb60346449c1a64893888989a~tplv-k3u1fbpfcp-watermark.image',
+          //   name: 'image'
+          // },
           menu: ['resize', 'crop', 'rotate', 'draw', 'shape', 'icon', 'text', 'filter'], // 底部菜单按钮列表 隐藏镜像flip和遮罩mask
           initMenu: 'draw', // 默认打开的菜单项
           menuBarPosition: 'bottom', // 菜单所在的位置
