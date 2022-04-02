@@ -1,0 +1,49 @@
+{% extends 'layout.html' %}
+{% block  content %}
+    <div class="container">
+        <div style="margin-bottom: 10px">
+            <a class="btn btn-success" href="/depart/add/" target="_blank">
+                上传图片
+            </a>
+        </div>
+        <div class="panel panel-default">
+            <!-- Default panel contents -->
+            <div class="panel-heading">Picture List</div>
+
+            <!-- Table -->
+            <table class="table table-bordered">
+                <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>name</th>
+                    <th>op</th>
+                    <th>preview</th>
+                </tr>
+                </thead>
+                <tbody>
+                {% for obj in queryset %}
+                    <tr>
+                        <th scope="row">{{ obj.id }}</th>
+                        <td>{{ obj.title }}</td>
+                        <td>
+                            <a class="btn btn-primary btn-xs" href="/commit/?name={{ obj.title }}">edit</a>
+                            <a class="btn btn-danger btn-xs" href="/depart/delete/?nid={{ obj.id }}">delete</a>
+                        </td>
+                        <td>
+                            <img src="/media/{{ obj.title }}.png" width="50" height="50" >
+                        </td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+        </div>
+        <ul class="pagination">
+            {{ page_string  }}
+        </ul>
+    </div>
+{% endblock %}
+{% block js %}
+    <script>
+
+    </script>
+{% endblock %}
